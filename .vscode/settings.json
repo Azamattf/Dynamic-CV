@@ -1,0 +1,4 @@
+
+{
+    "latex-workshop.latexmk.path": "path_to_latexmk"  // Replace with the actual path if necessary
+}

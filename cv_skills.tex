@@ -1,0 +1,10 @@
+% Skills Visualization (using bars)
+\usepackage{pgfplots}
+
+% Function to visualize skill levels
+\newcommand{\skillBar}[2]{  % Skill name and skill level (0 to 100)
+    \begin{tikzpicture}
+        \fill[accentColor] (0,0) rectangle (#2,0.4);
+        \node at (#2 + 0.2, 0.2) {#1};
+    \end{tikzpicture}
+}

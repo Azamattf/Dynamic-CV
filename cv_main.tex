@@ -1,0 +1,61 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{luacode}  % For LuaLaTeX functionality
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{geometry}
+
+% Define page margins
+\geometry{left=1in,right=1in,top=1in,bottom=1in}
+
+% Define colors
+\definecolor{accentColor}{rgb}{0.2, 0.6, 0.8}  % Light blue accent
+\definecolor{mainColor}{rgb}{0.1, 0.1, 0.1}  % Dark text color
+
+% Include custom LaTeX files
+\input{cv_layout.tex}
+\input{cv_styles.tex}
+\input{cv_icons.tex}
+\input{cv_skills.tex}
+
+% Lua code to fetch CSV files using curl
+\begin{luacode}
+    -- Ensure "data" folder exists
+    os.execute("mkdir -p data")
+
+    -- List of CSV URLs and filenames
+    local csv_files = {
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=210794926&single=true&output=csv", "data/expertise.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=167211696&single=true&output=csv", "data/personal_info.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1531448452&single=true&output=csv", "data/summary.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1714925551&single=true&output=csv", "data/job_specific.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1355823307&single=true&output=csv", "data/work_experience.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=470808040&single=true&output=csv", "data/education.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=850872146&single=true&output=csv", "data/education_nonformal.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=693445503&single=true&output=csv", "data/field_lab.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1495368041&single=true&output=csv", "data/skills.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=301030244&single=true&output=csv", "data/awards.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1291971909&single=true&output=csv", "data/projects.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=956232865&single=true&output=csv", "data/volunteering.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=269738174&single=true&output=csv", "data/publications.csv"},
+        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=985610371&single=true&output=csv", "data/hobbies.csv"}
+    }
+
+    -- Download each CSV using curl
+    for _, file in ipairs(csv_files) do
+        os.execute('curl -s -L -o "' .. file[2] .. '" "' .. file[1] .. '"')
+    end
+\end{luacode}
+
+\begin{document}
+
+% Start the document layout
+\begin{multicols}{2} 
+\columnsep=30pt
+
+% Section Visibility Control (loop through CSV and insert sections)
+\luascript{cv_main()}
+
+\end{multicols}
+
+\end{document}

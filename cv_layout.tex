@@ -1,0 +1,22 @@
+% Left column is narrower, right column wider
+\setlength{\columnsep}{20pt}
+\setlength{\columnwidth}{0.45\textwidth}
+
+% Define color accents for left column
+\usepackage{xcolor}
+\definecolor{accentColor}{rgb}{0.2, 0.6, 0.8}  % Light blue accent
+\definecolor{mainColor}{rgb}{0.1, 0.1, 0.1}  % Dark text color
+
+% Layout for sections
+\newcommand{\sectionleft}[1]{
+    \columnbreak
+    \vspace{10pt}
+    \noindent \textcolor{accentColor}{\textbf{#1}}
+    \vspace{5pt}
+}
+
+\newcommand{\sectionright}[1]{
+    \columnbreak
+    \noindent \textbf{#1}
+    \vspace{10pt}
+}
