@@ -1,5 +1,77 @@
+% !TEX program = lualatex
+\documentclass[10pt,a4paper]{article}
 
+% Required packages
+\usepackage{fontspec}
+\usepackage{luacode}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{paracol}
+\usepackage{geometry}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{csvsimple}
+\usepackage{pgfplots}
+\usepackage{hyperref}
 
+% Load our custom files
+\input{style.tex}
+\input{config.tex}
+
+% Remove default page margins and headers/footers
+\geometry{margin=0cm, top=0cm, bottom=0cm, left=0cm, right=0cm}
+\pagestyle{empty}
+
+% Define Lua functions for data processing
+\begin{luacode*}
+dofile("functions.lua")
+\end{luacode*}
+
+\begin{document}
+
+% Calculate column widths based on ratio
+\newlength{\firstcolwidth}
+\newlength{\secondcolwidth}
+\setlength{\firstcolwidth}{\columnratio\paperwidth}
+\setlength{\secondcolwidth}{\paperwidth-\firstcolwidth}
+
+% Start two-column layout
+\begin{paracol}{2}
+\setcolumnwidth{\firstcolwidth, \secondcolwidth}
+
+% First column (left, narrower with accent color)
+\columncolor{\primarycolor!15}
+
+% Process the sections for the left column
+\directlua{
+  process_sections("data/sections.csv", 1)
+}
+
+\switchcolumn
+
+% Second column (right, wider)
+\directlua{
+  process_sections("data/sections.csv", 2)
+}
+
+\end{paracol}
+
+% Process overflow sections if needed
+\directlua{
+  if has_overflow then
+    tex.print("\\newpage")
+    tex.print("\\begin{paracol}{2}")
+    tex.print("\\setcolumnwidth{\\firstcolwidth, \\secondcolwidth}")
+    tex.print("\\columncolor{\\primarycolor!15}")
+    process_overflow_sections(1)
+    tex.print("\\switchcolumn")
+    process_overflow_sections(2)
+    tex.print("\\end{paracol}")
+  end
+}
+
+\end{document}
 
 
     local csv_files = {
