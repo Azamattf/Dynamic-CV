@@ -4,6 +4,8 @@
 % Required packages
 \usepackage{fontspec}
 \usepackage{luacode}
+\usepackage{csvsimple}
+\usepackage{xfp}
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage{fontawesome5}
@@ -14,6 +16,9 @@
 \usepackage{csvsimple}
 \usepackage{pgfplots}
 \usepackage{hyperref}
+
+\pgfplotsset{compat=1.18}
+
 
 % Load our custom files
 \input{style.tex}
@@ -40,8 +45,9 @@ dofile("functions.lua")
 \begin{paracol}{2}
 \setcolumnwidth{\firstcolwidth, \secondcolwidth}
 
+
 % First column (left, narrower with accent color)
-\columncolor{\primarycolor!15}
+\columncolor{primarycolor!15}
 
 % Process the sections for the left column
 \directlua{
@@ -63,7 +69,7 @@ dofile("functions.lua")
     tex.print("\\newpage")
     tex.print("\\begin{paracol}{2}")
     tex.print("\\setcolumnwidth{\\firstcolwidth, \\secondcolwidth}")
-    tex.print("\\columncolor{\\primarycolor!15}")
+    tex.print("\\columncolor{primarycolor!15}")
     process_overflow_sections(1)
     tex.print("\\switchcolumn")
     process_overflow_sections(2)
@@ -72,21 +78,3 @@ dofile("functions.lua")
 }
 
 \end{document}
-
-
-    local csv_files = {
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=210794926&single=true&output=csv", "data/expertise.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=167211696&single=true&output=csv", "data/personal_info.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1531448452&single=true&output=csv", "data/summary.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1714925551&single=true&output=csv", "data/job_specific.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1355823307&single=true&output=csv", "data/work_experience.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=470808040&single=true&output=csv", "data/education.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=850872146&single=true&output=csv", "data/education_nonformal.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=693445503&single=true&output=csv", "data/field_lab.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1495368041&single=true&output=csv", "data/skills.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=301030244&single=true&output=csv", "data/awards.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=1291971909&single=true&output=csv", "data/projects.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=956232865&single=true&output=csv", "data/volunteering.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=269738174&single=true&output=csv", "data/publications.csv"},
-        {"https://docs.google.com/spreadsheets/d/e/2PACX-1vQD7KnMwpwoGatJiek81iNwLxV8_upwS854scKX-0QPvbtiw_I-5rylU353MXaUKS_Eg89dxZ_R_e9Q/pub?gid=985610371&single=true&output=csv", "data/hobbies.csv"}
-    }

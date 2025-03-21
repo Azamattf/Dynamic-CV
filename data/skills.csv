@@ -1,17 +1,20 @@
-skill,level,category
-Molecular Cloning,5,Technical
-PCR and qPCR,5,Technical
-Cell Culture,5,Technical
-CRISPR-Cas9 Gene Editing,4,Technical
-Flow Cytometry,4,Technical
-Confocal Microscopy,4,Technical
-Protein Purification,4,Technical
-Western Blotting,5,Technical
-Bioinformatics,3,Technical
-R Programming,4,Technical
-Python,3,Technical
-Grant Writing,4,Professional
-Project Management,4,Professional
-Scientific Writing,5,Professional
-Public Speaking,4,Professional
-Team Leadership,4,Professional
+Category,Skill,Level
+Computer Literacy,"MS Office, Google Docs, Sheets, Forms, Sites, video/audio editing",9
+Data Analysis,"Python, MS Excel, Google sheets, Google Looker Studio, data flow/reporting/automation",9
+Field/lab,"Sample collection, navigation, using geological maps, mapping",8
+Field/lab,"Geophysics: GPS, GPR, seismological station, electrical prospecting equipment, gravimetric units, magnetometer and radiometer",8
+Field/lab,"Glaciology: Glacier mass balance measurements (stake), hot water drilling",8
+Field/lab,"Hydrology: EC, data loggers",7
+Academic,Physics,7
+Project Management,"Project planning, team collaboration, communication, international event organization",6
+Academic,"Calculus, ODE, Statistics",6
+Modeling and Simulation,"GPR: REFLEX-W; Hydrology: HEC-RAS, HBV, GMS; Photogrammetry: FMIPROT",6
+MAIT,"Smelting, injection die casting, mechanical assembly, plumbing, drilling, angle grinding, soldering",6
+Design,"CAD: SolidWorks, Siemens NX",6
+Data Analysis,"Geospatial and remote sensing: ArcGIS, QGIS, SNAP (Sentinel)",5
+Design,Altium Designer,5
+Programming,C/C++,4
+Modeling and Simulation,Numerical Modeling,3
+Programming,Python,
+Programming,MATLAB,
+Programming,Simulink,

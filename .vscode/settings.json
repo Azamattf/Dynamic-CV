@@ -1,4 +1,27 @@
 
 {
-    "latex-workshop.latexmk.path": "path_to_latexmk"  // Replace with the actual path if necessary
+    "latex-workshop.latexmk.path": "path_to_latexmk",  // Replace with the actual path if necessary
+    
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "LuaLaTeX",
+            "tools": ["lualatex"]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-recorder",
+                "-shell-escape",  
+                "%DOC%"
+            ]
+        }
+    ]
+    
+    
 }

@@ -1,14 +1,14 @@
-name,csv_file,display,column
-Personal Info,personal_info.csv,yes,1
-Summary,summary.csv,yes,1
-Skills,skills.csv,yes,1
-Job Specific,job_specific.csv,yes,2
-Work Experience,work_experience.csv,yes,2
-Education,education.csv,yes,2
-Education Non-Formal,education_nonformal.csv,yes,1
-Field/Lab Experience,fieldlab.csv,yes,2
-Projects,projects.csv,yes,2
-Publications,publications.csv,yes,2
-Awards,awards.csv,yes,1
-Volunteering,volunteering.csv,yes,1
-Hobbies,hobbies.csv,yes,1
+Section,Column,Display,csv_file
+Personal Info,1,TRUE,personal_info.csv
+Summary,1,TRUE,summary.csv
+Job Specific,1,TRUE,job_specific.csv
+Work Experience,2,TRUE,work_experience.csv
+Education,2,TRUE,education.csv
+Education Non-Formal,1,FALSE,education_non-formal.csv
+Field/Lab,2,FALSE,field_lab.csv
+Skills,1,TRUE,skills.csv
+Awards,1,TRUE,awards.csv
+Projects,2,TRUE,projects.csv
+Volunteering,2,FALSE,volunteering.csv
+Publications,2,FALSE,publications.csv
+Hobbies,1,FALSE,hobbies.csv

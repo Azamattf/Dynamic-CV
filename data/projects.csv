@@ -1,6 +1,5 @@
-year,title,description
-2022,CRISPR Optimization Platform,"Developed a machine learning algorithm to predict optimal CRISPR guide RNAs for gene editing, improving efficiency by 35%."
-2020,Stem Cell Regeneration Study,"Investigated novel pathways in neural stem cell differentiation with implications for neurodegenerative disease treatments."
-2019,Cancer Biomarker Discovery,"Identified three novel biomarkers for early detection of pancreatic cancer using proteomics approaches."
-2017,Automated Lab Protocol System,"Led the development of a laboratory automation system that reduced experimental time by 40% and improved reproducibility."
-2015,Drug Resistance Mechanisms,"Characterized molecular mechanisms of drug resistance in breast cancer cell lines, leading to a new therapeutic approach."
+Title,Organization,Period,Country,Description
+WARR Rocketry,WARR,2024 - Present,Germany,"Rocketry Electronics: Helped with the design of PFC ""REMAP"" for the rocket NIXUS EX-4c. Designed the Interstage Connector in Altium Designer for the two-stage solid rocket WESP."
+Project NIXUS,WARR (Student initiative for rocketry and astronautics),Apr-Oct 2024,Germany,"Ground Support Equipment (GSE): Helped design, manufacture and assemble the filling station for safe and streamlined LOx and GN2 loading."
+APECS Remote Sensing Database Project,APECS (Association for Polar Early Career Scientists),2020 - 2023,International,"2021: Co-led Database subgroup of the Project Group. 2020: Created a Remote Sensing Database (Google Sheets) and Search Engine prototypes (Google Looker Studio), helped in creating and disseminating community surveys"
+Wind Farm Project in Zarafshan by Masdar,Green Business Solutions,August 2021,Uzbekistan,"Surveyed the project territory for land use features, including crops, vegetation used for communal grazing as part of Environmental and Social Impact Assessment efforts."
